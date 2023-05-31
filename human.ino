@@ -34,6 +34,8 @@ void humanApproach(){
 void stay(){
   if(humanStayed == false) {
     while(!humanStayed){
+      plateMoves=false;
+      plateMove();
       distanceSensorOn();
       //here you say that ok i will stay and few secs later sit really close to microwave so if becomes true
       if (distanceToMe > 5 && distanceToMe <= 30 && !humanStayed){
@@ -104,9 +106,11 @@ void hug(){
 
 void talk(){
   if (humanTalked == false && humanStayed && humanPetted && humanHugged){
-    distanceSensorOff();
+    //distanceSensorOff();
     Serial.println("will she talk???");    
     while(!humanTalked){
+      plateMoves=false;
+      plateMove();
       distanceSensorOn();
       Serial.println(distanceToMe);
       if(distanceToMe > 5 && distanceToMe <= 20 && !humanTalked){

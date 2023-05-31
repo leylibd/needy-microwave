@@ -84,6 +84,9 @@ void setup() {
 }
 
 void loop() {
+  //---------------------CHECKING COLORS HERE----------------
+  colorAlone();
+  delay(10000);
 ///////////////////////////DEBUGGING STUFF IGNORE/////////////////////
   //   int petDetect = analogRead(A1);
   //   Serial.println("will she pet??");

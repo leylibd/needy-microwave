@@ -19,7 +19,7 @@ CRGB leds[NUM_LEDS];
 //staying
 bool humanStayed = false;
 //petting
-bool humanPetted = true;
+bool humanPetted = true; //originally should be false, but in final version pet is not used, so i made it true so that other functions afterwards can be called
 //hugging
 bool humanHugged = false;
 //talking
@@ -40,30 +40,14 @@ bool humanIsAway = false;
 
 bool imNeedy = true;
 
-//millis delay
-
-unsigned long stayInterval = 10000; //waiting for 10 secs
-unsigned long startTime = 0;
-
-unsigned long petInterval = 3000; //waiting for 10 secs
-unsigned long petStartTime = 0;
-
-//CHANGE THESE AS WELL
-int periodHug = 3000;
-unsigned long timeHug = 0;
-
-int periodTalk = 3000;
-unsigned long timeHTalk = 0;
-
-
 
 void setup() {
   Serial.begin(9600);
 
   //servo
   timer.attach(11);
+  //plate servo is attached when servo should start to move
 
-  
 
   //ultrasonic
   pinMode(trigPin, OUTPUT);
@@ -78,8 +62,6 @@ void setup() {
   //sound
   pinMode(buzzer, OUTPUT);
 
-  //millis
-  //startTime = millis(); //store current time
 
 }
 
@@ -101,45 +83,11 @@ void loop() {
 
   // delay(10000);
 
-///////////////////////////DEBUGGING STUFF IGNORE/////////////////////
-  //   int petDetect = analogRead(A1);
-  //   Serial.println("will she pet??");
-  //   Serial.print(petDetect);
-  //   if(petDetect < 10){
-  //     Serial.println("i was petted!!");
-  //   }
 
-  // delay(10000);
-  //plateMove();
-  
-  // stay();//talk a bit here
-  // pet();//talk a bit here
-  // hug();//talk a bit here
-  // talk();//talk more here
-
-
-  //FastLED.clear(true);
-  
-  
-  //humanStayed = true;
-  //timerAfterStay();
-  //delay(5000);
-
-  //foodDone();
-  //delay(5000);
-  //pet();
-
-  //colorStay();
-  
-/////////////////////////////////DEBUGGING ENDS///////////////////////////////
 
 ////////////////////////////////BEGINNING!!!!!!////////////////////////////////
  
-  //beginning:
-  //servo_timer at 135
-  //servo_plate moving
-  //light white??
-  //foodDone();
+
   colorTalk(); // normal color at the beginning
   timerIsOn = true; //delete after everything is done -- here only to have loop for now
   Serial.println("-----------------hi!---------------------");
@@ -175,69 +123,10 @@ void loop() {
       //pet();
       hug();
       talk();
-      //imNeedy = false;
-      //VERY END: imNeedy = false;
     }
 
 
   delay(1000000);
-
-  //ultrasonic distance
-    //if close to microwave
-    //delay 3 secs so i can put my hand to the handle
-    //start needy actions:
-
-  //needy actions:
-    //servo_timer at 15
-    //servo_plate moving
-    //light blue
-
-  //you leave
-
-  //foodDone();
-  //you approach:
-  //ultrasonic distance
-    //if close to microwave
-    //delay 3 secs so i can put my hand to the handle
-    //start needy actions:
-
-  //needy actions:
-    //servo_timer at 15
-    //servo_plate moving
-    //light blue
-
-  //you interacting:
-    //1. you stay:
-    //"allright, i'll stay here with you"
-      //delay 5 secs
-      //light softer (define)
-      //(optional) servo_timer move 10 degrees?
-
-    //2. you pet:
-      //check light stuff
-      //light softer (define)
-      //(optional) servo_timer move 10 degrees?
-
-    //3. you hug:
-      //motion detector check motion
-      //light softer (define)
-      //(optional) servo_timer move 10 degrees?
-
-    //4. you talk:
-      //sounddetector?? check if there is sound
-      //delay 5 secs or so while i talk
-      //iTalked=true
-      //light white
-      //servo_timer move to 0
-    
-  //microwave happy:
-    //random happy lights for 5 secs
-    //beep
-    //servo_plate stop
-    //light off
-
-
-  //i take the food and eat there
 
 }
 
@@ -254,20 +143,6 @@ void debug(){
   buzzed = true;
 }
 
-//-----------------------------------------MICROWAVE ACTIONS-------------------------------------------------
-
-
-//------------------------------------------HUMAN ACTIONS---------------------------------------------------
-
-
-//------------------------------------------COLORS----------------------------------------
-
-
-//-------------------------------------ULTRASONIC----------------------------------
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-
 //refs:
   // moving 2 servos: 
     //https://forum.arduino.cc/t/can-i-control-two-servos-simultaneously/4909/3
@@ -280,11 +155,4 @@ void debug(){
   //colors:
     //https://www.w3schools.com/colors/colors_names.asp
 
-
-
-//to-dos
-  //add melody to buzzer
-  //see why petting doesnt work inside the function - SOLVED
-  //FastLED.clear(); NOT WORKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-  //smooth transitions between colors?
 

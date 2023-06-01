@@ -1,6 +1,6 @@
 void colorAlone(){
   for(int i=0; i<NUM_LEDS; i++){
-		leds[i] = CRGB::Navy; //or 330099
+		leds[i] = CRGB::Navy; //330099
 	}
 	FastLED.show();
 }
@@ -14,7 +14,7 @@ void colorStay(){
 
 void colorPet(){
   for(int i=0; i<NUM_LEDS; i++){
-		leds[i] = CRGB(255, 153, 51); //ffcc66 -> FF9933
+		leds[i] = CRGB(255, 153, 51); //FF9933
 	}
 	FastLED.show();
 }
@@ -28,7 +28,7 @@ void colorHug(){
 
 void colorTalk(){
   for(int i=0; i<NUM_LEDS; i++){
-		leds[i] = CRGB(255, 255, 204); //MAKE MORE WHITE?
+		leds[i] = CRGB(255, 255, 204); 
 	}
 	FastLED.show();
 }

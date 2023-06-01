@@ -20,14 +20,7 @@ void humanApproach(){
   //     delay(5000); //so i can reach the handle
   //     //colorStay();
   //   }
-  ////////////////////////////////////////////////////
 
-
-    //you approach:
-    //ultrasonic distance
-    //if close to microwave
-    //delay 3 secs so i can put my hand to the handle
-    //start needy actions:
 }
 
 
@@ -49,9 +42,6 @@ void stay(){
     }
   }
 
-  //1. you stay:
-      //light softer (define)
-      //(optional) servo_timer move 10 degrees?
 }
 
 void pet(){
@@ -67,13 +57,6 @@ void pet(){
     }
   }
   
-
-  //colorPet();
-  //you pet:
-      //if no light anymore:
-      //light softer (define)
-      //(optional) servo_timer move 10 degrees?
-
 }
 
 void hug(){
@@ -98,14 +81,9 @@ void hug(){
   //   timerAfterHug();
   // }
 
-  //3. you hug:
-      //motion detector check motion
-      //light softer (define)
-      //(optional) servo_timer move 10 degrees?
-
 }
 
-void talk(){
+void talk(){ //ok this part with detecting does not work. turning sensor on just gives 0 all the time. for now sensor just takes the data from "stay" action :)
   if (humanTalked == false && humanStayed && humanPetted && humanHugged){
      //do not turn the sensor off in stay??
     Serial.println("will she talk???"); 
@@ -126,13 +104,3 @@ void talk(){
       }
     }
   }
-
-
-  //4. you talk:
-      //sounddetector?? check if there is sound
-      //delay 5 secs or so while i talk
-      //iTalked=true
-      //light white
-      //servo_timer move to 0
-
-}

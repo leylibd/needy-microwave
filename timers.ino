@@ -1,4 +1,3 @@
-////timers
 //turning timer off at the first time when the timer is at 135
 void firstTimerOff(){
   if (timerIsOn){
@@ -39,6 +38,8 @@ void turnTimerOn(){
   
 }
 
+//------------------------timers after human action--------------------------------
+//originally each action should've been adding 45, but since i don't use the pet action in the final version, i skip its timer change. now timer adds 90 after talk action to make it 180 in total
 void timerAfterStay(){
   if(timerIsOn && humanStayed){
     Serial.println("timer to 45");

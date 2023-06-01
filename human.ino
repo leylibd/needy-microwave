@@ -1,11 +1,11 @@
 void humanApproach(){
   while(!humanApproached){
     distanceSensorOn();
-    if (distanceToMe > 5 && distanceToMe <= 30 && !humanApproached) {
+    if (distanceToMe > 5 && distanceToMe <= 40 && !humanApproached) {
       Serial.println("human came, NEEDY MODE OOOONNNNN!!!!!!!!!!");
       distanceSensorOff();
       humanApproached = true;
-      delay(2000); //so i can reach the handle
+      delay(100); //so i can reach the handle
       //colorStay();
     }
   }
@@ -37,11 +37,12 @@ void stay(){
       plateMoves=false;
       plateMove();
       distanceSensorOn();
+      Serial.println(distanceToMe);
       //here you say that ok i will stay and few secs later sit really close to microwave so if becomes true
-      if (distanceToMe > 5 && distanceToMe <= 30 && !humanStayed){
+      if (distanceToMe > 2 && distanceToMe <= 50 && !humanStayed){
         Serial.println("human stayedd!!!!!!");
         humanStayed = true;
-        distanceSensorOff();
+        //distanceSensorOff();
         colorStay();
         timerAfterStay();
       }
@@ -55,10 +56,10 @@ void stay(){
 
 void pet(){
   if(humanPetted == false && humanStayed){
-    int petDetect = analogRead(A1);
+    int petDetect = analogRead(A0);
     Serial.println("will she pet??");
     Serial.println(petDetect);
-    if(petDetect<600){
+    if(petDetect<430){
       humanPetted = true;
       Serial.println("i was petted!!");
       colorPet();
@@ -79,10 +80,10 @@ void hug(){
   if(humanHugged == false && humanStayed && humanPetted){
     int hugDetect = analogRead(A0);
     Serial.println("will she hug??");
-    if(hugDetect<600){
+    Serial.println(hugDetect);
+    if(hugDetect<500){
       humanHugged = true;
       Serial.println("i was huged!!");
-      Serial.println(hugDetect);
       colorHug();
       timerAfterHug();
     }
@@ -106,14 +107,14 @@ void hug(){
 
 void talk(){
   if (humanTalked == false && humanStayed && humanPetted && humanHugged){
-    //distanceSensorOff();
-    Serial.println("will she talk???");    
+     //do not turn the sensor off in stay??
+    Serial.println("will she talk???"); 
+    //distanceSensorOn();   //and remove this??
     while(!humanTalked){
       plateMoves=false;
       plateMove();
-      distanceSensorOn();
       Serial.println(distanceToMe);
-      if(distanceToMe > 5 && distanceToMe <= 20 && !humanTalked){
+      if(distanceToMe > 2 && distanceToMe <= 50 && !humanTalked){
         Serial.println("SHE TALKED TO ME!!!!");
         humanTalked = true;
         colorTalk();

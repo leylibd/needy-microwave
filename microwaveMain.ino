@@ -19,7 +19,7 @@ CRGB leds[NUM_LEDS];
 //staying
 bool humanStayed = false;
 //petting
-bool humanPetted = false;
+bool humanPetted = true;
 //hugging
 bool humanHugged = false;
 //talking
@@ -85,8 +85,22 @@ void setup() {
 
 void loop() {
   //---------------------CHECKING COLORS HERE----------------
-  colorAlone();
-  delay(10000);
+  // colorAlone();
+  // delay(5000);
+
+  // colorStay();
+  // delay(5000);
+
+  // colorPet();
+  // delay(5000);
+
+  // colorHug();
+  // delay(5000);
+
+  // colorTalk();
+
+  // delay(10000);
+
 ///////////////////////////DEBUGGING STUFF IGNORE/////////////////////
   //   int petDetect = analogRead(A1);
   //   Serial.println("will she pet??");
@@ -143,7 +157,7 @@ void loop() {
       plateMoves=false;
       plateMove();
       distanceSensorOn();
-      if (distanceToMe > 40){ //i decided to leave
+      if (distanceToMe > 30){ //i decided to leave
         Serial.println("human left :(((((((");
         humanIsAway = true;
         distanceSensorOff();
@@ -158,7 +172,7 @@ void loop() {
       plateMoves=false;
       plateMove();
       stay();
-      pet();
+      //pet();
       hug();
       talk();
       //imNeedy = false;

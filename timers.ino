@@ -62,7 +62,7 @@ void timerAfterPet(){
 void timerAfterHug(){
   if(timerIsOn && humanHugged){
     Serial.println("timer to 135");
-    for (timerPos = 90; timerPos <= 135; timerPos += 1) {
+    for (timerPos = 45; timerPos <= 90; timerPos += 1) {
       timer.write(timerPos);
       delay(40);
       }
@@ -72,7 +72,7 @@ void timerAfterHug(){
 void timerAfterTalk(){
   if(timerIsOn && humanTalked){
     Serial.println("timer to 180");
-    for (timerPos = 135; timerPos <= 180; timerPos += 1) {
+    for (timerPos = 90; timerPos <= 180; timerPos += 1) {
       timer.write(timerPos);
       delay(40);
       }

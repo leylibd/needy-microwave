@@ -1,34 +1,34 @@
 void colorAlone(){
   for(int i=0; i<NUM_LEDS; i++){
-		leds[i] = CRGB::Navy;
+		leds[i] = CRGB::Navy; //or 330099
 	}
 	FastLED.show();
 }
 
 void colorStay(){
   for(int i=0; i<NUM_LEDS; i++){
-		leds[i] = CRGB::CadetBlue;  //THIS COLOR IS TOO COLD
+		leds[i] = CRGB(51, 255, 204);  //33ffcc
 	}
 	FastLED.show();
 }
 
 void colorPet(){
   for(int i=0; i<NUM_LEDS; i++){
-		leds[i] = CRGB::LightSalmon; //TOO RED
+		leds[i] = CRGB(255, 153, 51); //ffcc66 -> FF9933
 	}
 	FastLED.show();
 }
 
 void colorHug(){
   for(int i=0; i<NUM_LEDS; i++){
-		leds[i] = CRGB::Moccasin;  // THIS COLOR IS BARELY DISTIQUSHABLE FROM THE LAST
-	}
-	FastLED.show();
+		leds[i] = CRGB(255, 255, 0);  //FFFF00 
+  }
+  FastLED.show();
 }
 
 void colorTalk(){
   for(int i=0; i<NUM_LEDS; i++){
-		leds[i] = CRGB::Ivory;
+		leds[i] = CRGB(255, 255, 204); //MAKE MORE WHITE?
 	}
 	FastLED.show();
 }

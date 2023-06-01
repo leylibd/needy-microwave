@@ -5,12 +5,12 @@ void plateMove(){
     Serial.println("plate moves");    
     for (platePos = 180; platePos >= 0; platePos -= 1) {
         plate.write(platePos);
-        delay(20);
+        delay(15);
     }
 
     for (platePos = 0; platePos <= 180; platePos += 1) {
         plate.write(platePos);
-        delay(20);
+        delay(15);
     }
     
     plateMoves=true;
